@@ -1,5 +1,5 @@
 // 讲师列表功能
-define(['jquery','template'],function ($,template) {
+define(['jquery','template','bootstrap'],function ($,template) {
   $.ajax({
     type:'get',
     url:'/api/teacher',
@@ -7,6 +7,7 @@ define(['jquery','template'],function ($,template) {
     success:function(data){
       //console.log(data);
       var html = template('template',{list:data.result});
+      //console.log(html);
       $('#teacheinfo').html(html);
       //注销和启用功能
       $('.zx').click(function(){
@@ -36,6 +37,27 @@ define(['jquery','template'],function ($,template) {
             }
           })
       });
+      //查看动能
+      $('.ck').click(function(){
+        //获取父元素td
+        var td = $(this).closest('td');
+        //给td添加data-tcId
+        var tcId = td.attr('data-tcId');
+        $.ajax({
+          type:'get',
+          url:'/api/teacher/view',
+          data:{tc_id:tcId},
+          dataType:'json',
+          success:function(data){
+            if(data.code==200){
+             var html = template('temp',data.result);
+             $('#modleInfo').html(html);
+             $('#teacherModal').modal();
+            }
+          }
+        })
+      })
+
     }
   })
 });
