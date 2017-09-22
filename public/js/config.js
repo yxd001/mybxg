@@ -6,8 +6,10 @@ require.config({
     template:'artTemplate/template-web',
     bootstrap:'bootstrap/js/bootstrap.min',
     common:'../js/common',
+    utile:'../js/utile',
     login:'../js/login',
-    teacherlist:'../js/teacher-list'
+    teacherlist:'../js/teacher-list',
+    teacheradd:'../js/teacher-add'
   },
   shim:{
     bootstrap:{

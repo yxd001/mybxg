@@ -22,7 +22,7 @@
                     <li class="active">讲师列表</li>
                 </ol>
                 <div class="page-title">
-                    <a href="./teacher_add.html" class="btn btn-success btn-sm pull-right">添加讲师</a>
+                    <a href="/teacher/add" class="btn btn-success btn-sm pull-right">添加讲师</a>
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-body">
@@ -48,7 +48,7 @@
                             </tr>
                         </thead>
                         <tbody id="teacheinfo">
-                          
+                          <!-- 讲师列表模块渲染 -->
                         </tbody>
                     </table>
                 </div>
@@ -70,6 +70,7 @@
             </div>
         </div>
     </div>
+    <!-- 讲师列表 -->
 <script type="text/template" id="template">
     {{each list}}
       <tr>
@@ -89,7 +90,7 @@
          <td data-tcId='{{$value.tc_id}}' data-status='{{$value.tc_status}}'>
             <!-- 给查看按钮添加类名  ck -->
               <a href="#teacherModal" class="btn btn-info btn-xs ck">查 看</a>
-             <a href="./teacher_add.html" class="btn btn-info btn-xs">编 辑</a>
+             <a href="/teacher/add?tc_id={{$value.tc_id}}" class="btn btn-info btn-xs">编 辑</a>
              <!-- 给注销按钮添加类名   zx -->
              <a href="javascript:;" class="btn btn-warning btn-xs zx">
                 <!-- 判断按钮文字的状态 -->
