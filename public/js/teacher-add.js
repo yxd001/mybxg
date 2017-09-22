@@ -1,4 +1,4 @@
-define(['jquery','template','utile'],function ($,template,utile) {
+define(['jquery','template','utile' ,'datepicker','language'],function ($,template,utile) {
   //console.log(location);
   var tcId = utile.qs('tc_id');
   //console.log(tcId)//结果为id值

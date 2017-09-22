@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>学IT - 后台管理系统</title>
      <?php include('./views/common/style.html'); ?>
+     <link rel="stylesheet" type="text.css" href="/public/assets/bootstrap-datepicker/css/bootstrap-datepicker.css">
 </head>
 <body>
     
@@ -22,6 +23,7 @@
     </div>
 <!-- 编辑讲师，添加讲师功能模板 -->
     <script type="text/template" id="temll">
+
         <ol class="breadcrumb">
                     <li><a href="javascript:;">讲师管理</a></li>
                     <li class="active">{{operate}}</li>
@@ -52,7 +54,7 @@
                             <label for="" class="col-xs-3 control-label">入职时间</label>
                             <div class="col-xs-4">
                                 <!-- 入职日期 -->
-                                <input name="tc_join_date" value="{{tc_join_date}}" type="text" class="form-control input-sm">
+                                <input data-provide="datepicker" data-date-language='zh-CN' data-date-format='yyyy-mm-dd' name="tc_join_date" value="{{tc_join_date}}" type="text" class="form-control input-sm">
                             </div>
                         </div>
                         <div class="form-group">
