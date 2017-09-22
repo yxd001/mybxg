@@ -14,6 +14,8 @@ define(['jquery','template','utile'],function ($,template,utile) {
          data.result.operate='编辑讲师'
          var html = template('temll',data.result);
          $('#teacherAf').html(html);
+       // 处理表单url地址  修改讲师
+       submitForm('/api/teacher/update');
         }
       })
 
@@ -21,7 +23,24 @@ define(['jquery','template','utile'],function ($,template,utile) {
     //添加
      var html = template('temll',{operate:'添加讲师'});
          $('#teacherAf').html(html);
+         // 处理表单url地址  添加讲师
+       submitForm('/api/teacher/add');
   }
 
-
-})
+  //提交功能  封装一个方法  调用即可
+    function  submitForm(url){
+      $('#tjBtn').click(function(){
+      $.ajax({
+        type:'post',
+        url:url,
+        data:$('#teacherForm').serialize(),
+        dataType:'json',
+        success:function(data){
+          if (data.code==200) {
+            location.href = '/teacher/list';
+          }
+        }
+      })
+    })
+    }
+});
