@@ -37,25 +37,30 @@
                         <div class="form-group">
                             <label for="" class="col-xs-3 control-label">姓名</label>
                             <div class="col-xs-4">
-                                <!-- 讲师名称 -->
-                                <input name="tc_name" value="{{tc_name}}" type="text" class="form-control input-sm" placeholder="讲师名称">
+                                <!-- 讲师名称  data-required提示规则  data-describedby提示的位置 data-description提示的名称-->
+                                <input data-required data-describedby="tcNameInfo" data-description='tcName' name="tc_name" value="{{tc_name}}" type="text" class="form-control input-sm" placeholder="讲师名称">
                             </div>
+                            <div id="tcNameInfo" class="col-xs-2"></div>
                         </div>
                         <!-- 判断密码 -->
                         {{if !tc_id}}
                         <div class="form-group">
                             <label for="" class="col-xs-3 control-label">密码</label>
                             <div class="col-xs-4">
-                                <input name="tc_pass" type="password" class="form-control input-sm">
+                                <input data-required data-description="tcPass" data-describedby="tcPassInfo" data-pattern="^\d{6}$" name="tc_pass" type="password" class="form-control input-sm">
                             </div>
+                            <!-- 提示信息的位置 右边-->
+                            <div id="tcPassInfo" class="col-xs-2"></div>
                         </div>
                         {{/if}}
                         <div class="form-group">
                             <label for="" class="col-xs-3 control-label">入职时间</label>
                             <div class="col-xs-4">
-                                <!-- 入职日期 -->
-                                <input data-provide="datepicker" data-date-language='zh-CN' data-date-format='yyyy-mm-dd' name="tc_join_date" value="{{tc_join_date}}" type="text" class="form-control input-sm">
+                                <!-- 入职日期  data-provide="datepicker" 日期插件的规则-->
+                                <input data-required data-description="tcJoninDate" data-describedby="tcJoninDateInfo" data-provide="datepicker" data-date-language='zh-CN' data-date-format='yyyy-mm-dd' name="tc_join_date" value="{{tc_join_date}}" type="text" class="form-control input-sm">
                             </div>
+                            <!-- 提示信息的位置 右边-->
+                            <div id="tcJoninDateInfo" class="col-xs-2"></div>
                         </div>
                         <div class="form-group">
                             <label for="" class="col-xs-3 control-label">类型</label>
@@ -80,7 +85,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-xs-7">
-                                <input id="tjBtn" type="button" value="提交" class="btn btn-success btn-sm pull-right" >
+                                <input id="tjBtn" type="submit" value="提交" class="btn btn-success btn-sm pull-right" >
                             </div>                          
                         </div>
                     </form>

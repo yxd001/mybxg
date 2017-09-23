@@ -1,4 +1,4 @@
-define(['jquery','template','utile' ,'datepicker','language'],function ($,template,utile) {
+define(['jquery','template','utile' ,'datepicker','language','validate','form'],function ($,template,utile) {
   //console.log(location);
   var tcId = utile.qs('tc_id');
   //console.log(tcId)//结果为id值
@@ -27,20 +27,56 @@ define(['jquery','template','utile' ,'datepicker','language'],function ($,templa
        submitForm('/api/teacher/add');
   }
 
-  //提交功能  封装一个方法  调用即可
-    function  submitForm(url){
-      $('#tjBtn').click(function(){
-      $.ajax({
-        type:'post',
-        url:url,
-        data:$('#teacherForm').serialize(),
-        dataType:'json',
-        success:function(data){
-          if (data.code==200) {
-            location.href = '/teacher/list';
-          }
-        }
-      })
-    })
+
+
+
+    function submitForm(url){
+        $('form').validate({
+            sendForm:false,//禁止默认的
+            valid:function(){
+                //console.log('success');
+                $(this).ajaxSubmit({
+                    type:'post',
+                    url:url,
+                    dataType:'json',
+                    success:function(data){
+                        if(data.code==200){
+                            location.href='/teacher/list';
+                        }
+                    }
+                })
+            },
+            //验证过程（提示信息）
+            description:{
+                //用户名
+                tcName:{
+                    required:'用户名不能为空'
+                },
+                tcPass:{
+                    required:'密码不能为空',
+                    pattern:"密码格式无效"
+                },
+                tcJoninDate:{
+                    required:'日期不能为空'
+                }
+            }
+        })
     }
+
+  //提交功能  封装一个方法  调用即可
+  //  function  submitForm(url){
+  //    $('#tjBtn').click(function(){
+  //    $.ajax({
+  //      type:'post',
+  //      url:url,
+  //      data:$('#teacherForm').serialize(),
+  //      dataType:'json',
+  //      success:function(data){
+  //        if (data.code==200) {
+  //          location.href = '/teacher/list';
+  //        }
+  //      }
+  //    })
+  //  })
+  //  }
 });
