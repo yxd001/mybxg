@@ -29,7 +29,7 @@ define(['jquery','template','utile' ,'datepicker','language','validate','form'],
 
 
 
-
+//表单验证
     function submitForm(url){
         $('form').validate({
             sendForm:false,//禁止默认的
