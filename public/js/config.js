@@ -11,6 +11,7 @@ require.config({
     validate:'vlidate/jquery-validate',
     form:'jquery-form/jquery.form',
     uploadify:'upload/jquery.uploadify.min',
+    region:'jquery-region/jquery.region',
     utile:'../js/utile',
     login:'../js/login',
     teacherlist:'../js/teacher-list',

@@ -1,4 +1,4 @@
-define(['jquery','template','uploadify'],function($,template){
+define(['jquery','template','uploadify','region'],function($,template){
     $.ajax({
         type:'get',
         url:'/api/teacher/profile',
@@ -12,20 +12,25 @@ define(['jquery','template','uploadify'],function($,template){
                 width:120,
                 height:120,
                 buttonText:'',
+                //进度条设置为空
                 itemTemplate:'<span></span>',
                 swf:'/public/assets/upload/uploadify.swf',
                 //地址  后台接口
                 uploader:'/api/uploader/avatar',
                 //跟接口对应
                 fileObjName:'tc_avatar',
-                //
+                //上传成功返回的内容   有三个参数  需要第二个参数
                 onUploadSuccess:function(a,b){
-                   // console.log(b);
-                    //转化成对象
+                   // console.log(b);//字符串结果
+                    //字符串转化成对象
                     var obj =JSON.parse(b);
-                    // 添加图片 的src属性  获取到的result 中的path路经过
+                    // 添加图片 的src属性  获取到的result 中的path路经
                     $('.preview img').attr('src',obj.result.path);
                 }
+            });
+            //处理省市区三级联动
+            $('#pcd').region({
+                url:'/public/assets/jquery-region/region.json',
             })
         }
     })
