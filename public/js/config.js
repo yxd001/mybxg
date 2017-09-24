@@ -15,9 +15,11 @@ require.config({
     ckeditor:'ckeditor/ckeditor',
     utile:'../js/utile',
     login:'../js/login',
+    courselist:'../js/course.list',
     teacherlist:'../js/teacher-list',
     teacheradd:'../js/teacher-add',
     settings:'../js/settings',
+    index:'../js/index'
   },
   //非标准的模块变成标准的
   shim:{
