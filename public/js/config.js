@@ -12,12 +12,14 @@ require.config({
     form:'jquery-form/jquery.form',
     uploadify:'upload/jquery.uploadify.min',
     region:'jquery-region/jquery.region',
+    ckeditor:'ckeditor/ckeditor',
     utile:'../js/utile',
     login:'../js/login',
     teacherlist:'../js/teacher-list',
     teacheradd:'../js/teacher-add',
     settings:'../js/settings',
   },
+  //非标准的模块变成标准的
   shim:{
     bootstrap:{
       deps:['jquery']
@@ -30,6 +32,9 @@ require.config({
     },
     uploadify:{
       deps:['jquery']
+    },
+    ckeditor:{
+      exports:'CKEDITOR'
     }
   }
 })

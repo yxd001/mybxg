@@ -1,4 +1,4 @@
-// 讲师列表功能
+ // 讲师列表功能
 define(['jquery','template','bootstrap'],function ($,template) {
   $.ajax({
     type:'get',
@@ -52,6 +52,7 @@ define(['jquery','template','bootstrap'],function ($,template) {
             if(data.code==200){
              var html = template('temp',data.result);
              $('#modleInfo').html(html);
+              //模态框
              $('#teacherModal').modal();
             }
           }
