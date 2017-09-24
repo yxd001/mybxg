@@ -27,10 +27,11 @@
     <!-- 表单模板渲染-->
     <script type="text/template" id="settingsTpl">
 
-        <form action="" class="form-horizontal">
+        <form id="settingsForm" class="form-horizontal">
             <div class="form-group">
                 <label for="" class="col-xs-3 control-label">姓名</label>
                 <div class="col-xs-5">
+                    <input type="hidden" name="tc_id" value="{{tc_id}}"/>
                     <p class="form-control-static">{{tc_name}}</p>
                 </div>
             </div>
@@ -74,13 +75,13 @@
             <div class="form-group">
                 <label for="" class="col-xs-3 control-label">籍贯</label>
                 <div class="col-xs-5" id="pcd">
-                    <select id="p" data-id="{{tc_province}}" name="" class="form-control input-sm">
+                    <select id="p" data-id="{{tc_province}}" name="tc_province" class="form-control input-sm">
                         <option value="">请输入省...</option>
                     </select>
-                    <select data-id="{{tc_city}}" id="c" name="" class="form-control input-sm">
+                    <select data-id="{{tc_city}}" id="c" name="tc_city" class="form-control input-sm">
                         <option value="">请输入市...</option>
                     </select>
-                    <select id="d"  data-id="{{tc_district}}" name="" class="form-control input-sm">
+                    <select id="d"  data-id="{{tc_district}}" name="tc_district" class="form-control input-sm">
                         <option value="">请输入区/县...</option>
                     </select>
                 </div>
@@ -94,7 +95,7 @@
             <div class="form-group">
                 <label for="" class="col-xs-3 control-label">电子邮箱</label>
                 <div class="col-xs-5">
-                    <input name="tc_emile" value="{{tc_emile}}" type="text" class="form-control input-sm">
+                    <input name="tc_email" value="{{tc_email}}" type="text" class="form-control input-sm">
                 </div>
             </div>
             <div class="form-group">
@@ -111,7 +112,7 @@
             </div>
             <div class="form-group">
                 <div class="col-xs-8">
-                    <input type="button" value="保 存"  class="btn btn-success btn-sm pull-right"/>
+                    <input type="submit" value="保 存"  class="btn btn-success btn-sm pull-right"/>
                     <a href="./repass.html" class="btn btn-link btn-sm pull-right">更改密码？</a>
                 </div>
             </div>
