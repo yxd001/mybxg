@@ -14,7 +14,7 @@ define(['jquery','template','utile'],function($,template,utile){
         data:{cs_id:csId},
         dataType:'json',
         success:function(data){
-            //console.log(data)
+            console.log(data)
             //判断课程添加的时候显示课程添加，课程编辑的时候是课程编辑
             if(flag){
                 data.result.operate='课程编辑';
