@@ -44,15 +44,18 @@ define(['jquery', 'template', 'ckeditor', 'uploadify', 'region', 'datepicker', '
 
             //处理表单提交  点击保存  提交信息
             $('#settingsForm').validate({
+                //阻止默认的
                 sendForm: false,
+                //所有验证都有效时调用
                 valid: function () {
                     //获取你选中下拉菜单里面的内容
                     var p = $('#p').find('option:selected').text();
                     var c = $('#c').find('option:selected').text();
                     var d = $('#d').find('option:selected').text();
+                    //籍贯拼接
                     var hometown = p + '|' + c + '|' + d;
 
-                    //同步富文本内容  instance实例  instances多个实例
+                    //循坏 同步富文本内容  instance实例  instances多个实例
                     for(var instance in CKEDITOR.instances){
                         CKEDITOR.instances[instance].updateElement();
                     }

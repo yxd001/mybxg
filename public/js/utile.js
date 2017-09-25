@@ -23,8 +23,9 @@ define(['jquery'], function ($) {
             }
             return result;
         },
+        //共用方法
         setMenu: function (path) {
-            //设置导航菜单选中
+            //设置导航菜单选中   实现菜单高亮显示效果
             $('.aside .navs a[href="'+path+'"]').addClass('active').closest('ul').show();
         }
     }

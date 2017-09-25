@@ -16,10 +16,12 @@ require.config({
     utile:'../js/utile',
     login:'../js/login',
     courselist:'../js/course.list',
+    courseadd:'../js/course.add',
     teacherlist:'../js/teacher-list',
     teacheradd:'../js/teacher-add',
     settings:'../js/settings',
-    index:'../js/index'
+    index:'../js/index',
+    besic:'../js/besic'
   },
   //非标准的模块变成标准的
   shim:{
