@@ -1,5 +1,40 @@
-define(['jquery','template','utile'],function($,template,utile){
-    // //设置导航菜单选中 初始地址就是add这个地址  都要以他为基础
+define(['jquery','template','utile','uploadify'],function($,template,utile){
+    // //璁剧疆瀵艰埅鑿滃崟閫変腑 鍒濆鍦板潃灏辨槸add杩欎釜鍦板潃  閮借浠ヤ粬涓哄熀纭�
     utile.setMenu('/course/add');
+    //鑾峰彇璇剧▼id
+    var csId = utile.qs('cs_id');
+
+    //鑾峰彇璇剧▼灏侀潰鏁版嵁 璋冪敤鎺ュ彛
+    $.ajax({
+       type:'get',
+        url:'/api/course/picture',
+        data:{cs_id:csId},
+        dataType:'json',
+        success:function(data){
+            //console.log(data);
+            var html = template('pictureTpl',data.result);
+            $('#pictureInfo').html(html);
+
+            //鍥剧墖涓婁紶
+            $('#myfile').uploadify({
+                width:80,
+                height:'auto',
+                buttonText:'閫夋嫨鍥剧墖',
+                itemTemplate:'<span></span>',
+                buttonClass:'btn btn-success btn-sm',
+                swf:'/public/assets/upload/uploadify.swf',
+                uploader:'/api/uploader/cover',
+                fileObjName:'cs_cover_original',
+                formData:{cs_id:csId},
+                onUploadSuccess:function(a,b,c){
+                    //console.log(b);
+                    var a = JSON.parse(b.trim());
+                    $('.preview img').attr('src',a.result.path);
+                }
+            });
+        }
+    });
+
+
 
 })
