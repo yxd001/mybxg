@@ -11,7 +11,7 @@ define(['jquery','utile','form'],function($,utile){
            success:function(data){
                if(data.code==200){
                    //跳转到下一步
-                   location.href='/course/besic?cs_id'+data.result.cs_id;
+                   location.href='/course/basic?cs_id='+data.result.cs_id;
                }
            }
        })

@@ -21,7 +21,7 @@ require.config({
     teacheradd:'../js/teacher-add',
     settings:'../js/settings',
     index:'../js/index',
-    besic:'../js/besic'
+    basic:'../js/basic'
   },
   //非标准的模块变成标准的
   shim:{
