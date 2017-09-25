@@ -1,4 +1,4 @@
-define(['jquery','template','utile','ckeditor'],function($,template,utile,CKEDITOR){
+define(['jquery','template','utile','ckeditor','validate','form'],function($,template,utile,CKEDITOR){
     //设置导航菜单选中 初始地址就是add这个地址  都要以他为基础
     utile.setMenu('/course/add');
     //获取课程id
@@ -14,7 +14,7 @@ define(['jquery','template','utile','ckeditor'],function($,template,utile,CKEDIT
         data:{cs_id:csId},
         dataType:'json',
         success:function(data){
-            console.log(data)
+            //console.log(data)
             //判断课程添加的时候显示课程添加，课程编辑的时候是课程编辑
             if(flag){
                 data.result.operate='课程编辑';
@@ -53,7 +53,31 @@ define(['jquery','template','utile','ckeditor'],function($,template,utile,CKEDIT
                     {name: 'editing', groups: ['find', 'selection', 'spellchecker', 'editing']},
                     {name: 'links', groups: ['links']},
                 ]
-            })
+            });
+
+            //处理表单提交
+            $('#basicForm').validate({
+               sendForm:false,
+               valid:function(){
+                   //同步富文本
+                   for(var instance in CKEDITOR.instances){
+                       CKEDITOR.instances[ instance ].updateElement();
+                   }
+                   //表单提交
+                   $(this).ajaxSubmit({
+                       type:'post',
+                       url:'/api/course/update/basic',
+                       data:{cs_id:csId},
+                       dataTpye:'json',
+                       success:function(data){
+                           //console.log(data);
+                          if(data.code==200){
+                              location.href='/course/picture?cs_id='+data.result.cs_id;
+                          }
+                       }
+                   })
+               }
+            });
         }
     })
 });
