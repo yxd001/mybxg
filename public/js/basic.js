@@ -1,4 +1,4 @@
-define(['jquery','template','utile'],function($,template,utile){
+define(['jquery','template','utile','ckeditor'],function($,template,utile,CKEDITOR){
     //设置导航菜单选中 初始地址就是add这个地址  都要以他为基础
     utile.setMenu('/course/add');
     //获取课程id
@@ -24,6 +24,36 @@ define(['jquery','template','utile'],function($,template,utile){
 
             var html = template('basicTpl',data.result);
             $('#basicInfo').html(html);
+
+
+            //处理二级菜单下拉功能
+            $('#one').change(function(){
+                var pid = $(this).val();
+                //console.log(pid)
+                $.ajax({
+                    type:'get',
+                    url:'/api/category/child',
+                    data:{cg_id:pid},
+                    dataType:'json',
+                    success:function(data){
+                        //console.log(data)
+                        //拼接二级下拉菜单
+                        var tpl =' <option value="">请输入二级分类...</option>{{each list}}<option value="{{$value.cg_id}}">{{$value.cg_name}}<option>{{/each}}'
+
+                        var html = template.render(tpl,{list:data.result});
+                        $('#secondType').html(html);
+                    }
+                })
+            });
+
+            //富文本
+            CKEDITOR.replace('editor',{
+                toolbarGroups: [
+                    {name: 'clipboard', groups: ['clipboard', 'undo']},
+                    {name: 'editing', groups: ['find', 'selection', 'spellchecker', 'editing']},
+                    {name: 'links', groups: ['links']},
+                ]
+            })
         }
     })
 });

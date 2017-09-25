@@ -62,6 +62,7 @@ define(['jquery', 'template', 'ckeditor', 'uploadify', 'region', 'datepicker', '
                     $(this).ajaxSubmit({
                         type: 'post',
                         data: {tc_hometown: hometown},
+                        //更新个人信息地址
                         url: '/api/teacher/modify',
                         dataType: 'json',
                         success: function (data) {

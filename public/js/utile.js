@@ -25,7 +25,7 @@ define(['jquery'], function ($) {
         },
         //共用方法
         setMenu: function (path) {
-            //设置导航菜单选中   实现菜单高亮显示效果
+            //设置导航菜单选中   实现菜单高亮显示效果    closest('ul').show();让课程列表下的标题显示出来
             $('.aside .navs a[href="'+path+'"]').addClass('active').closest('ul').show();
         }
     }
