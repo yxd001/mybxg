@@ -15,6 +15,13 @@ define(['jquery','template','utile','uploadify','jcrop','form'],function($,templ
             var html = template('pictureTpl',data.result);
             $('#pictureInfo').html(html);
 
+
+            //获取图片
+            var img  = $('.preview img').eq(0);
+
+            //防止被多次提交保存
+            var nowCrop =null;
+
             //图片上传  uploadify插件
             $('#myfile').uploadify({
                 width:80,
@@ -31,6 +38,10 @@ define(['jquery','template','utile','uploadify','jcrop','form'],function($,templ
                     var a = JSON.parse(b.trim());//结果为字符串  转化成对象格式
                     //获取图片添加src属性  属性值为后天返回的数据
                     $('.preview img').attr('src',a.result.path);
+                    //图片上传成功之后  图片的选区会自动选中 实现裁剪选区框
+                    courseImg();
+                    //自动选中的时候  裁切按钮的文字变成保存图片
+                    $('#cropBtn').text('保存图片').attr('data-flag',true);
                 }
             });
 
@@ -137,12 +148,16 @@ define(['jquery','template','utile','uploadify','jcrop','form'],function($,templ
             });
             //封装一个方法获取图片
             var img  = $('.preview img').eq(0);
+            //截取图片
             function courseImg(){
                 img.Jcrop({
                     //需要动态创建坐标，大小
                     //setSelect:[100,100,300,200],
                     aspectPatio:2
             },function(){
+                    //销毁之前的裁切实例  判断
+                    nowCrop && nowCrop.destroy();
+                    nowCrop=this;
                     //console.log(this);
                     //获取图片的高度宽度
                     var w = this.ui.stage.width;

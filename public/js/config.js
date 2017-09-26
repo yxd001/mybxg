@@ -23,7 +23,8 @@ require.config({
     index:'../js/index',
     basic:'../js/basic',
     coursepicture:'../js/picture',
-    jcrop:'jcorp/js/Jcrop'
+    jcrop:'jcorp/js/Jcrop',
+    croplesson:'../js/croplesson'
   },
   //非标准的模块变成标准的
   shim:{
