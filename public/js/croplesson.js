@@ -16,6 +16,10 @@ define(['jquery','template','utile'],function($,template,utile){
             //console.log(data);
             var html = template('lessonTpl',data.result);
             $('#lessonInfo').html(html);
+
+            $('#lessonBtn').click(function(){
+
+            })
         }
     })
 });
