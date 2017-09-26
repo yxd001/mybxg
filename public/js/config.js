@@ -22,7 +22,8 @@ require.config({
     settings:'../js/settings',
     index:'../js/index',
     basic:'../js/basic',
-    coursepicture:'../js/picture'
+    coursepicture:'../js/picture',
+    jcrop:'jcorp/js/Jcrop'
   },
   //非标准的模块变成标准的
   shim:{
@@ -40,6 +41,9 @@ require.config({
     },
     ckeditor:{
       exports:'CKEDITOR'
+    },
+    jcrop:{
+      deps:['jquery']
     }
   }
 })
