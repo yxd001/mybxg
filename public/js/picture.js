@@ -146,8 +146,8 @@ define(['jquery','template','utile','uploadify','jcrop','form'],function($,templ
                     courseImg();
                 }
             });
-            //封装一个方法获取图片
-            var img  = $('.preview img').eq(0);
+            //封装一个方法
+            //var img  = $('.preview img').eq(0);
             //截取图片
             function courseImg(){
                 img.Jcrop({
@@ -173,7 +173,7 @@ define(['jquery','template','utile','uploadify','jcrop','form'],function($,templ
                     aInput.eq(1).val(y);
                     aInput.eq(2).val(w);
                     aInput.eq(3).val(h);
-                    //动态创建
+                    //动态创建，选区的大小坐标需要动态生成
                     this.newSelection();
                     this.setSelect([x,y,width,height]);
 
