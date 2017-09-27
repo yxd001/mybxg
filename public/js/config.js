@@ -22,9 +22,12 @@ require.config({
     settings:'../js/settings',
     index:'../js/index',
     basic:'../js/basic',
+    nprogress:'nprogress/nprogress',
+    echarts:'echarts/echarts.min',
     coursepicture:'../js/picture',
     jcrop:'jcorp/js/Jcrop',
-    croplesson:'../js/croplesson'
+    croplesson:'../js/croplesson',
+    state:'../js/state'
   },
   //非标准的模块变成标准的
   shim:{

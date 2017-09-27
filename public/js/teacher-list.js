@@ -1,5 +1,5 @@
  // 讲师列表功能
-define(['jquery','template','utile','bootstrap'],function ($,template,utile) {
+define(['jquery','template','utile','bootstrap','state'],function ($,template,utile) {
   //设置导航菜单选中
   utile.setMenu(location.pathname);
   //console.log(location.pathname);//域名之后路径
