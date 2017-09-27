@@ -1,4 +1,4 @@
-define(['jquery','template','utile','bootstrap'],function($,template,utile){
+define(['jquery','template','utile','bootstrap','form'],function($,template,utile){
    //设置导航菜单选中
     utile.setMenu('/course/add');
 
@@ -22,6 +22,21 @@ define(['jquery','template','utile','bootstrap'],function($,template,utile){
                 $('#lesInfo').html(html);
                 //调用modal模态框方法
                 $('#chapterModal').modal();
+                //点击添加按钮
+                $('#addOrlenssonBtn').click(function(){
+                    $('#lessonForm').ajaxSubmit({
+                        type:'post',
+                        url:'/api/course/chapter/add',
+                        data:{ct_cs_id:csId},
+                        dataType:'json',
+                        success:function(data){
+                            // console.log(data)
+                            if(data.code==200){
+                                location.reload();
+                            }
+                        }
+                    })
+                })
             });
             //编辑课时
             $('.bjBtn').click(function(){
@@ -35,12 +50,26 @@ define(['jquery','template','utile','bootstrap'],function($,template,utile){
                     data:{ct_id : ctId},
                     dataType:'json',
                     success:function(data){
-                        console.log(data)
+                        //console.log(data)
                         data.result.operate='编辑课时';
                         var html = template('lesTpl',data.result);
                         $('#lesInfo').html(html);
                         //调用modal模态框方法
                         $('#chapterModal').modal();
+                        $('#addOrlenssonBtn').click(function(){
+                            $('#lessonForm').ajaxSubmit({
+                                type:'post',
+                                url:'/api/course/chapter/modify',
+                                data:{ct_cs_id:csId,ct_id:ctId},
+                                dataType:'json',
+                                success:function(data){
+                                    // console.log(data)
+                                    if(data.code==200){
+                                        location.reload();
+                                    }
+                                }
+                            })
+                        })
                     }
                 })
 
